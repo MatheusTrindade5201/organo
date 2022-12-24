@@ -50,10 +50,13 @@ function App() {
     setColaboradores([...colaboradores, colaborador])
   }
 
+  const [formOpen, setFormOpen] = useState('open')
+
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
+      <Formulario open={formOpen} times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
+      <button onClick={() => setFormOpen(formOpen === 'open' ? '' : 'open')} className='formShow'>+</button>
 
       {times.map(time => <Time 
         key={time.nome} 
